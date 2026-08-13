@@ -1,252 +1,378 @@
-// ROTEIRO DE INSPEÇÃO PARA DISTRIBUIDORA DE PRODUTOS PARA A SAÚDE
+// ROTEIRO DE INSPEÇÃO PARA DISTRIBUIDORA DE PRODUTOS PARA A SAÚDE (COMPLETO)
 const CHECKLIST_DISTRIBUIDORA = [
-    // Category: Informações Gerais
+    // Category: INFORMAÇÕES GERAIS
     {
         id: "D1",
-        category: "Informações Gerais",
-        description: "Apresenta contrato social ou ata de constituição registrada na junta comercial e suas alterações, se houver?",
+        category: "INFORMAÇÕES GERAIS",
+        description: "Apresenta contrato social ou ata de constituição registrada na junta comercial e suas alterações, se houver;",
         risk: "",
-        legislation: "RDC 665/2022, arts. 4º a 30; RDC 16/2014 art. 2º"
+        legislation: "RDC 665/2022, arts. 4º e 28 a 30; RDC 16/2014 art. 28"
     },
     {
         id: "D2",
-        category: "Informações Gerais",
+        category: "INFORMAÇÕES GERAIS",
         description: "Apresenta Cadastro Nacional de Pessoa Jurídica (CNPJ) contemplando a atividade econômica pleiteada?",
         risk: "",
-        legislation: "RDC 665/2022, arts. 4º a 30; RDC 16/2014 art. 2º"
+        legislation: "RDC 665/2022, arts. 4º e 28 a 30;RDC 16/2014 art. 28"
     },
     {
         id: "D3",
-        category: "Informações Gerais",
-        description: "Apresenta autorização ou alvará referente à localização e ocupação, proteção ambiental, segurança das instalações e segurança dos trabalhadores?",
+        category: "INFORMAÇÕES GERAIS",
+        description: "Apresenta autorização ou alvará referente à localização e ocupação, proteção ambiental, segurança das instalações segurança dos trabalhadores?",
         risk: "",
-        legislation: "RDC 665/2022, arts. 4º a 77; RDC 16/2014 art. 2º"
+        legislation: "RDC 665/2022, arts. 4º, 67 e 77;RDC 16/2014 art. 28"
     },
     {
         id: "D4",
-        category: "Informações Gerais",
-        description: "Apresenta contratos de prestação de serviços diversos ou documentos equivalentes (devem ser realizados somente com empresas autorizadas e licenciadas pela autoridade competente), quando aplicável?",
+        category: "INFORMAÇÕES GERAIS",
+        description: "Apresenta contratos de prestação de serviços diversos ou documentos equivalentes, os quais devem ser realizados somente com empresas autorizadas e licenciadas pela autoridade competente, quando aplicável ?",
         risk: "",
-        legislation: "RDC 665/2022, arts. 4º, 17 e 21 a 27; RDC 16/2014 art. 28"
+        legislation: "RDC 665/2022, arts. 4º, 16, 17 e 21 a 27; RDC 16/2014 art. 28"
     },
     {
         id: "D5",
-        category: "Informações Gerais",
+        category: "INFORMAÇÕES GERAIS",
         description: "Apresenta comprovação do registro de responsabilidade técnica realizada pelo profissional legalmente habilitado junto ao respectivo conselho de classe?",
         risk: "",
-        legislation: "RDC 665/2022, arts. 8º, 13º e 14º; RDC 16/2014"
+        legislation: "RDC 665/2022, arts. 8º, 9º, 13º e 14;RDC 16/2014 art. 28"
     },
     {
         id: "D6",
-        category: "Informações Gerais",
-        description: "Apresenta certificado de licenciamento de corpo de bombeiros válido?",
+        category: "INFORMAÇÕES GERAIS",
+        description: "Apresenta certificado de licenciamento de corpo de bombeiros?",
         risk: "",
-        legislation: "Lei Estadual nº 13.331/01; Decreto nº 5.711/02"
+        legislation: "LEI Nº 13331, de 23 de novembro de 2001; DECRETO Nº 5.711, de 05 de maio de 2002"
     },
     {
         id: "D7",
-        category: "Informações Gerais",
-        description: "Apresenta AFE (Autorização de Funcionamento de Empresa) junto a Anvisa?",
+        category: "INFORMAÇÕES GERAIS",
+        description: "Apresenta AFE junto a Anvisa?",
         risk: "",
         legislation: "RDC 16/2014"
     },
 
-    // Category: Responsabilidade Gerencial
+    // Category: RESPONSABILIDADE GERENCIAL
     {
         id: "D8",
-        category: "Responsabilidade Gerencial",
-        description: "Apresenta Manual de Boas Práticas de Distribuição e Armazenagem?",
+        category: "RESPONSABILIDADE GERENCIAL",
+        description: "Apresenta Manual de Boas Práticas de Distribuição e Armazenagem.",
         risk: "",
-        legislation: "RDC 665/2022, arts. 4º, 28 a 30; RDC 16/2014"
+        legislation: "RDC 665/2022, arts. 4º, 7º e 28 a 30; RDC 16/2014 art. 28"
     },
     {
         id: "D9",
-        category: "Responsabilidade Gerencial",
-        description: "Apresenta procedimentos operacionais padrão (POPs) para as principais atividades desenvolvidas, com instruções de funcionamento e política de qualidade?",
+        category: "RESPONSABILIDADE GERENCIAL",
+        description: "Apresenta procedimentos operacionais padrão as principais atividades que serão desenvolvidas, contendo as informações necessárias para o funcionamento de acordo com a política de qualidade e a legislação vigente.",
         risk: "",
-        legislation: "RDC 665/2022, arts. 4º, 28 a 30; RDC 16/2014"
+        legislation: "RDC 665/2022, arts. 4º, 7º e 28 a 30;RDC 16/2014 art. 28"
     },
     {
         id: "D10",
-        category: "Responsabilidade Gerencial",
-        description: "Estabelece sua política e seus objetivos de comprometimento com a qualidade, mensuráveis e coerentes com as diretrizes organizacionais?",
+        category: "RESPONSABILIDADE GERENCIAL",
+        description: "Estabelece sua política e seus objetivos de comprometimento com a qualidade, que devem ser mensuráveis e coerentes com a política estabelecida",
         risk: "",
         legislation: "RDC 665/2022, art. 5º"
     },
     {
         id: "D11",
-        category: "Responsabilidade Gerencial",
-        description: "Apresenta estrutura organizacional adequada, representada por organograma, com pessoal suficiente para os processos de qualidade?",
+        category: "RESPONSABILIDADE GERENCIAL",
+        description: "Apresenta estrutura organizacional adequada, representada por meio de organograma, com pessoal suficiente para assegurar que os produtos sejam fabricados de acordo com os requisitos da norma?",
         risk: "",
-        legislation: "RDC 665/2022, art. 8º"
+        legislation: "RDC 665/2022, art 8º"
     },
     {
         id: "D12",
-        category: "Responsabilidade Gerencial",
-        description: "Designa profissional qualificado para assegurar que os requisitos do sistema de qualidade sejam estabelecidos e mantidos (com designação documentada)?",
+        category: "RESPONSABILIDADE GERENCIAL",
+        description: "Designa um indivíduo para assegurar que os requisitos do sistema de qualidade sejam estabelecidos e mantidos, sendo esta documentada.",
         risk: "",
         legislation: "RDC 665/2022, art. 9º"
     },
+
+    // Category: PESSOAL
     {
         id: "D13",
-        category: "Responsabilidade Gerencial",
-        description: "Possui POPs específicos para: treinamento pessoal, recebimento, armazenamento de produtos acabados, devolvidos e recolhidos, controle de documentos, limpeza e sanitização, tratamento de não conformidades, recolhimento de produtos, tratamento de reclamações, ações preventivas e corretivas?",
+        category: "PESSOAL",
+        description: "Apresenta POP para treinamento de boas práticas dos funcionários?",
         risk: "",
-        legislation: "RDC 665/2022, art. 12, item VIII C/C RDC 16/14 art. 28, item II, al. B, D"
+        legislation: "RDC 665/2022, Art. 15"
     },
-
-    // Category: Limpeza e Sanitização
     {
         id: "D14",
-        category: "Limpeza e Sanitização",
-        description: "Apresenta registro físico ou digital de limpeza dos ambientes e/ou equipamentos?",
+        category: "PESSOAL",
+        description: "Apresenta registro de treinamento atualizado?",
         risk: "",
-        legislation: "RDC 665/2022, art. 68"
+        legislation: "RDC 665/2022, Art. 15"
     },
+
+    // Category: CONTROLE DE COMPRAS
     {
         id: "D15",
-        category: "Limpeza e Sanitização",
-        description: "O consumo de alimentos e bebidas é feito exclusivamente em local específico e isolado da área de armazenamento?",
+        category: "CONTROLE DE COMPRAS",
+        description: "A empresa realiza a avaliação de fornecedores de produtos e serviços e mantém registros dos aprovados?",
         risk: "",
-        legislation: "RDC 665/2022, art. 72"
+        legislation: "RDC 665/2022, ARTS. 21 A 24 RDC 16/14 ART. 28"
     },
-
-    // Category: Saúde e Higiene Pessoal
     {
         id: "D16",
-        category: "Saúde e Higiene Pessoal",
-        description: "Os funcionários estão aparentemente saudáveis e fazem uso de vestuário limpo e adequado para a atividade?",
+        category: "CONTROLE DE COMPRAS",
+        description: "A empresa realiza a avaliação de clientes?",
         risk: "",
-        legislation: "RDC 665/2022, art. 70"
+        legislation: "RDC 16/14 ART. 28"
     },
-
-    // Category: Controle de Contaminação
     {
         id: "D17",
-        category: "Controle de Contaminação",
-        description: "O estabelecimento está livre de pragas, insetos, roedores e de condições de criatório de vetores (dengue, zika, chikungunya, febre amarela, etc.)?",
+        category: "CONTROLE DE COMPRAS",
+        description: "Apresenta POP de Qualificação de fornecedores e prestadores de serviços",
         risk: "",
-        legislation: "RDC 665/2022, art. 74"
+        legislation: "RDC 665/2022 art. 21 e 22"
     },
     {
         id: "D18",
-        category: "Controle de Contaminação",
-        description: "Apresenta comprovante atualizado de desinsetização/desratização e laudo de limpeza do reservatório de água?",
+        category: "CONTROLE DE COMPRAS",
+        description: "São utilizados serviços de transportes devidamente qualificados?",
         risk: "",
-        legislation: "RDC 665/2022, art. 74"
+        legislation: "RDC 16/14 ART. 28"
     },
 
-    // Category: Rotulagem de Produtos
+    // Category: GERENCIAMENTO DE RISCO (aplicável somente às importadoras)
     {
         id: "D19",
-        category: "Rotulagem de Produtos (Importadora)",
-        description: "[EXCLUSIVO IMPORTADORA] Os produtos importados possuem rótulo e instruções de uso redigidas em português?",
+        category: "GERENCIAMENTO DE RISCO (aplicável somente às importadoras)",
+        description: "Estabelece processo contínuo de gerenciamento de risco que envolva todo o ciclo de vida de um produto importado?",
         risk: "",
-        legislation: "RDC 665/2022, arts. 85 a 88"
+        legislation: "RDC 665/2022 art. 18 a 20"
     },
+
+    // Category: DOCUMENTOS E REGISTROS DE QUALIDADE
     {
         id: "D20",
-        category: "Rotulagem de Produtos (Importadora)",
-        description: "[EXCLUSIVO IMPORTADORA] Os rótulos são projetados, impressos e aplicados de forma legível e perfeitamente aderidos ao produto durante todas as etapas?",
+        category: "DOCUMENTOS E REGISTROS DE QUALIDADE",
+        description: "Possui manual de boas práticas de armazenamento e distribuição que descreve: política de qualidade, organograma, cargos e responsabilidades, política de treinamento e contratações, qualificação de fornecedores e prestadores de serviços",
         risk: "",
-        legislation: "RDC 665/2022, arts. 85 a 88"
+        legislation: "RDC 665/2022, ARTS. 4º, 7º E 28 A 30 C/C RDC 16/14 ART. 28 ÍTEM I AL. F"
     },
     {
         id: "D21",
-        category: "Rotulagem de Produtos (Importadora)",
-        description: "[EXCLUSIVO IMPORTADORA] Possui procedimentos documentados específicos para as rotinas de embalagem e rotulagem?",
+        category: "DOCUMENTOS E REGISTROS DE QUALIDADE",
+        description: "POSSUI POP’S PARA: treinamento pessoal, recebimento de produtos, armazenamento de produtos cabados, devolvidos e recolhidos, controle de documentos, limpeza e sanitização, tratamento de não conformidades, recolhimento de produtos, tratamento de reclamações, ações preventivas e corretivas.",
         risk: "",
-        legislation: "RDC 665/2022, arts. 85 a 88"
+        legislation: "RDC 665/2022, ART. 120, INC. VIII C/C RDC 16/14 ART. 28 ÍTEM II, AL. B, D"
     },
 
-    // Category: Inspeções e Testes
+    // Category: LIMPEZA E SANITIZAÇÃO
     {
         id: "D22",
-        category: "Inspeções e Testes (Importadora)",
-        description: "[EXCLUSIVO IMPORTADORA] O importador/distribuidor assegura por meio de registro que todo equipamento de medição e teste (mecânico, automatizado ou eletrônico) é adequado e produz resultados válidos?",
+        category: "LIMPEZA E SANITIZAÇÃO",
+        description: "Apresenta registro de limpeza dos ambientes e ou equipamentos?",
         risk: "",
-        legislation: "RDC 665/2022, art. 93"
+        legislation: "RDC 665/2022 art. 68 a 69"
     },
     {
         id: "D23",
-        category: "Inspeções e Testes (Importadora)",
-        description: "[EXCLUSIVO IMPORTADORA] O importador/distribuidor assegura que sejam mantidos registros das datas de calibração e das mensurações obtidas?",
+        category: "LIMPEZA E SANITIZAÇÃO",
+        description: "O consumo de alimentos e bebidas é feito em local específico?",
         risk: "",
-        legislation: "RDC 665/2022, art. 94 C/C RDC 16/2014 art. 28"
+        legislation: "RDC 665/2022, ART. 72"
     },
 
-    // Category: Segurança do Trabalhador
+    // Category: SAÚDE E HIGIENE PESSOAL
     {
         id: "D24",
-        category: "Segurança do Trabalhador",
-        description: "Os funcionários fazem uso de EPI (Equipamento de Proteção Individual) compatível com o processo de trabalho realizado?",
+        category: "SAÚDE E HIGIENE PESSOAL",
+        description: "Os funcionários estão aparentemente saudáveis e fazem uso de vestuário limpo e adequado para a atividade",
         risk: "",
-        legislation: "RDC 665/2022, art. 77"
+        legislation: "RDC 665/2022, ARTS. 70 E 71"
     },
+
+    // Category: CONTROLE DE CONTAMINAÇÃO
     {
         id: "D25",
-        category: "Segurança do Trabalhador",
-        description: "Apresenta procedimentos e instruções assegurando o cumprimento das normas aplicáveis à saúde e segurança do trabalhador?",
+        category: "CONTROLE DE CONTAMINAÇÃO",
+        description: "O estabelecimento está livre de pragas, insetos, roedores e de condições que propiciem abrigo e criatório de animais prejudiciais à saúde, em especial os mosquitos transmissores de dengue, zika, chikungunya, febre amarela e outras doenças?",
         risk: "",
-        legislation: "RDC 665/2022, arts. 15 e 70"
+        legislation: "RDC 665/22, art. 74"
     },
     {
         id: "D26",
-        category: "Segurança do Trabalhador",
-        description: "Apresenta os programas regulamentares (PCMSO, PGR) e exames (ASO) dos funcionários atualizados?",
+        category: "CONTROLE DE CONTAMINAÇÃO",
+        description: "Apresenta comprovante de dedetização e limpeza de reservatório de água atualizado?",
         risk: "",
-        legislation: "Legislação Trabalhista Brasileira / Normas Regulamentadoras"
+        legislation: "RDC 665/22, art. 74"
     },
 
-    // Category: Manuseio e Armazenamento
+    // Category: ROTULAGEM DE PRODUTOS(aplicável somente às importadoras)
     {
         id: "D27",
-        category: "Manuseio e Armazenamento",
-        description: "Apresenta evidências documentadas das atividades de movimentação, fluxo e armazenamento seguro de produtos?",
+        category: "ROTULAGEM DE PRODUTOS(aplicável somente às importadoras)",
+        description: "Os produtos importados possuem rótulo e instruções em português?",
         risk: "",
-        legislation: "RDC 665/2022, Capítulo VI"
+        legislation: "RDC 665/22, art. 85 a 87"
     },
-
-    // Category: Gerenciamento de Reclamações
     {
         id: "D28",
-        category: "Gerenciamento de Reclamações",
-        description: "Apresenta registro de recebimento de reclamações de clientes que foram adequadamente examinadas, avaliadas, investigadas e arquivadas?",
+        category: "ROTULAGEM DE PRODUTOS(aplicável somente às importadoras)",
+        description: "Os rótulos são projetados, impressos e aplicados de forma legível e aderida ao produto durante todas as etapas",
+        risk: "",
+        legislation: "RDC 665/2022, ARTS. 86 E 87"
+    },
+    {
+        id: "D29",
+        category: "ROTULAGEM DE PRODUTOS(aplicável somente às importadoras)",
+        description: "Possui procedimento para embalagem e rotulagem",
+        risk: "",
+        legislation: "RDC 665/2022, ARTS. 84 A 87"
+    },
+
+    // Category: INSPEÇÕES E TESTES (aplicável somente às importadoras)
+    {
+        id: "D30",
+        category: "INSPEÇÕES E TESTES (aplicável somente às importadoras)",
+        description: "O importador/distribuidor assegura através de registro que todo o equipamento de medição e teste, incluindo o equipamento mecânico, automatizado ou eletrônico, seja adequado aos fins que se destinam, produzindo resultados válidos?",
+        risk: "",
+        legislation: "RDC 665/2022, ART. 93"
+    },
+    {
+        id: "D31",
+        category: "INSPEÇÕES E TESTES (aplicável somente às importadoras)",
+        description: "O importador/distribuidor assegura que sejam mantidos registros das datas de calibração e mensuração obtidas?",
+        risk: "",
+        legislation: "RDC 665/2022, ARTS. 94 A 99 C/C RDC 16/14 ART. 28"
+    },
+
+    // Category: SEGURANÇA DO TRABALHADOR
+    {
+        id: "D32",
+        category: "SEGURANÇA DO TRABALHADOR",
+        description: "Os funcionários fazem uso de epi compatível com o processo de trabalho realizado?",
+        risk: "",
+        legislation: "RDC 665/2022, ART. 77"
+    },
+    {
+        id: "D33",
+        category: "SEGURANÇA DO TRABALHADOR",
+        description: "Apresenta procedimentos assegurando o cumprimento às normas aplicáveis à saúde do trabalhador?",
+        risk: "",
+        legislation: "RDC 665/2022, Art. 15, §1º e art. 70"
+    },
+    {
+        id: "D34",
+        category: "SEGURANÇA DO TRABALHADOR",
+        description: "Apresenta PCMSO, PGR, ASO atualizados?",
+        risk: "",
+        legislation: "legislação trabalhista/SST"
+    },
+
+    // Category: MANUSEIO E ARMAZENAMENTO
+    {
+        id: "D35",
+        category: "MANUSEIO E ARMAZENAMENTO",
+        description: "Os produtos armazenados ou expostos para o consumo estão dentro do prazo de validade?",
+        risk: "",
+        legislation: "RDC 665/2022, art. 109"
+    },
+    {
+        id: "D36",
+        category: "MANUSEIO E ARMAZENAMENTO",
+        description: "A área de armazenamento tem capacidade suficiente para assegurar a estocagem ordenada e racional das diversas categorias de produtos?",
+        risk: "",
+        legislation: "RDC 16/14 ART. 28, ÍTEM II, AL. C"
+    },
+    {
+        id: "D37",
+        category: "MANUSEIO E ARMAZENAMENTO",
+        description: "Todos os materiais são armazenados e manuseados sob condições apropriadas e de forma ordenada, de modo a preservar a integridade e prevenir trocas?",
+        risk: "",
+        legislation: "RDC 16/14 ART. 28, ÍTEM II, AL. C"
+    },
+    {
+        id: "D38",
+        category: "MANUSEIO E ARMAZENAMENTO",
+        description: "Controla e registra as condições de umidade e temperatura no setor de armazenamento dos produtos?",
+        risk: "",
+        legislation: "RDC 665/2022, ART. 68, PARÁGRAFO ÚNICO, E ART. 111"
+    },
+
+    // Category: DISTRIBUIÇÃO DE PRODUTOS ACABADOS
+    {
+        id: "D39",
+        category: "DISTRIBUIÇÃO DE PRODUTOS ACABADOS",
+        description: "Possui sistema de rastreabilidade implantado, com controle numérico (lote, série, outro).",
+        risk: "",
+        legislation: "RDC 665/2022, ARTS. 112, III, 113 E 114 C/C RDC 16/14 ART. 28 ÍTEM II, AL."
+    },
+
+    // Category: PROCEDIMENTO PARA PRODUTOS NÃO CONFORMES
+    {
+        id: "D40",
+        category: "PROCEDIMENTO PARA PRODUTOS NÃO CONFORMES",
+        description: "Existe local segregado, devidamente identificado, para estocagem de produtos vencidos, reprovados, recolhidos ou para produtos não conformes?",
+        risk: "",
+        legislation: "RDC 665/2022, ARTS. 109, III, 110 E 115 A 118"
+    },
+    {
+        id: "D41",
+        category: "PROCEDIMENTO PARA PRODUTOS NÃO CONFORMES",
+        description: "As não conformidades são devidamente identificadas, tratadas e registradas?",
+        risk: "",
+        legislation: "RDC 665/2022, ARTS. 115 A 118 C/C RDC 16/14 ART."
+    },
+    {
+        id: "D42",
+        category: "PROCEDIMENTO PARA PRODUTOS NÃO CONFORMES",
+        description: "Se a importadora detém o registro do produto, possui sistema de tecnovigilância estruturado e implantado? (EM CASO AFIRMATIVO: recebe e documenta as informações referentes a queixas técnicas, eventos adversos, falsificações e outros)",
+        risk: "",
+        legislation: "RDC 67/09 ART. 6º, INC. 6; RDC 665/2022, ARTS. 120 E 121; RDC 16/14 ART. 28"
+    },
+
+    // Category: AÇÕES CORRETIVAS E PREVENTIVAS
+    {
+        id: "D43",
+        category: "AÇÕES CORRETIVAS E PREVENTIVAS",
+        description: "Apresenta evidências das atividades?",
+        risk: "",
+        legislation: "RDC 665/2022"
+    },
+
+    // Category: GERENCIAMENTO DE RECLAMAÇÕES
+    {
+        id: "D44",
+        category: "GERENCIAMENTO DE RECLAMAÇÕES",
+        description: "Apresenta registro de recebimento de reclamações que foram examinadas, avaliadas, investigadas e arquivadas?",
         risk: "",
         legislation: "RDC 665/2022, art. 121"
     },
 
-    // Category: Auditoria de Qualidade
+    // Category: AUDITORIA DE QUALIDADE
     {
-        id: "D29",
-        category: "Auditoria de Qualidade",
-        description: "A empresa possui um programa de auditoria de qualidade documentado com procedimentos estabelecidos e implantados?",
+        id: "D45",
+        category: "AUDITORIA DE QUALIDADE",
+        description: "A empresa possui sistema de qualidade com procedimentos de auditoria da qualidade estabelecidos e implantados?",
         risk: "",
-        legislation: "RDC 665/2022, art. 124"
+        legislation: "RDC 665/2022, ARTS. 122 A 124"
     },
     {
-        id: "D30",
-        category: "Auditoria de Qualidade",
-        description: "Apresenta registros atualizados das execuções de auditorias internas periódicas?",
+        id: "D46",
+        category: "AUDITORIA DE QUALIDADE",
+        description: "Apresenta registros atualizados da execução de auditoria?",
         risk: "",
-        legislation: "RDC 665/2022, art. 124"
-    },
-
-    // Category: Instalação e Assistência Técnica
-    {
-        id: "D31",
-        category: "Instalação e Assistência Técnica (Importadora)",
-        description: "[EXCLUSIVO IMPORTADORA] A assistência técnica de equipamentos médicos é devidamente registrada e nela constam os resultados das inspeções e testes para aprovação do serviço?",
-        risk: "",
-        legislation: "RDC 665/2022, arts. 125 a 130"
+        legislation: "RDC 665/2022, ARTS. 122 A 124"
     },
 
-    // Category: Técnicas Estatísticas
+    // Category: INSTALAÇÃO DE EQUIPAMENTOS E ASSISTÊNCIA TÉCNICA (aplicável somente às importadoras)
     {
-        id: "D32",
-        category: "Técnicas Estatísticas (Importadora)",
-        description: "[EXCLUSIVO IMPORTADORA] Estabelece procedimentos para identificar técnicas estatísticas válidas para verificar o desempenho do sistema de qualidade e a capacidade do processo?",
+        id: "D47",
+        category: "INSTALAÇÃO DE EQUIPAMENTOS E ASSISTÊNCIA TÉCNICA (aplicável somente às importadoras)",
+        description: "A assistência técnica de equipamentos médicos é registrada? No registro da assistência técnica constam: resultados das inspeções e testes para aprovação do serviço?",
         risk: "",
-        legislation: "RDC 665/2022, arts. 131 a 134"
+        legislation: "RDC 665/2022, ARTS. 15, 125 A 130"
+    },
+
+    // Category: TÉCNICAS ESTATÍSTICAS(aplicável somente às importadoras)
+    {
+        id: "D48",
+        category: "TÉCNICAS ESTATÍSTICAS(aplicável somente às importadoras)",
+        description: "Estabelece procedimentos para identificar técnicas estatísticas válidas para verificar o desempenho do sistema da qualidade e a capacidade do processo em atender as especificações estabelecidas?",
+        risk: "",
+        legislation: "RDC 665/2022, art. 131 a 134."
     }
 ];
