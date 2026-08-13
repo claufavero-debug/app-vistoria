@@ -145,6 +145,9 @@ let state = {
     establishmentAddress: "",
     establishmentRt: "",
     establishmentRtCouncil: "",
+    establishmentSei: "",
+    establishmentAccomp: "",
+    includeRepSignature: true,
     activityName: "Educação Infantil - Creche",
     activityCnae: "8511-2/00",
     activityCnaes: ["8511-2/00"],
@@ -166,6 +169,15 @@ let signaturePads = {};
 // INITIALIZATION
 // ==========================================================================
 document.addEventListener("DOMContentLoaded", () => {
+    // Check login status
+    const loggedIn = localStorage.getItem("visa_logged_in") === "true";
+    const overlay = document.getElementById("login-overlay");
+    if (loggedIn) {
+        if (overlay) overlay.classList.add("hidden");
+    } else {
+        if (overlay) overlay.classList.remove("hidden");
+    }
+
     initInspectionId();
     loadStateFromStorage();
     initTheme();
@@ -348,6 +360,8 @@ function initHeaderInputs() {
         { id: "establishment-address", key: "establishmentAddress" },
         { id: "establishment-rt", key: "establishmentRt" },
         { id: "establishment-rt-council", key: "establishmentRtCouncil" },
+        { id: "establishment-sei", key: "establishmentSei" },
+        { id: "establishment-accomp", key: "establishmentAccomp" },
         { id: "activity-name", key: "activityName" },
         { id: "activity-cnae", key: "activityCnae" },
         { id: "complementary-info", key: "complementaryInfo" }
@@ -360,6 +374,14 @@ function initHeaderInputs() {
             el.addEventListener("input", (e) => {
                 state[f.key] = e.target.value;
                 saveStateToStorage();
+                
+                // Dynamically update the representative signature label if they type in their name
+                if (f.key === "establishmentAccomp") {
+                    const labelRepEl = document.getElementById("sig-label-rep");
+                    if (labelRepEl) {
+                        labelRepEl.textContent = e.target.value ? `Assinatura de: ${e.target.value}` : "Assinatura do Responsável por Acompanhar a Inspeção";
+                    }
+                }
             });
         }
     });
@@ -845,44 +867,49 @@ function renderSignaturePadsUI() {
         initInspectorSignatureCanvas(`sig-canvas-inspector-${inspector.id}`, inspector);
     });
     
-    // 2. Append the representative signature box (always present)
-    const repBox = document.createElement("div");
-    repBox.className = "signature-box";
-    repBox.innerHTML = `
-        <label>Assinatura do Responsável do Local</label>
-        <div class="form-group" style="margin-top: 8px; margin-bottom: 12px; text-align: left;">
-            <label style="font-size: 0.8rem; margin-bottom: 4px;">CPF do Responsável (Opcional)</label>
-            <input type="text" id="representative-cpf" value="${state.representativeCpf || ''}" placeholder="Ex: 000.000.000-00" style="padding: 6px; height: auto; font-size: 0.9rem; width: 100%;">
-        </div>
-        <label class="checkbox-label" style="display: flex; gap: 8px; font-size: 0.8rem; margin-top: 8px; margin-bottom: 12px; font-weight: normal; cursor: pointer; text-align: left; line-height: 1.3; color: var(--text-main);">
-            <input type="checkbox" id="rep-legal-agreement" ${state.repLegalAgreement ? 'checked' : ''} style="width: auto; margin-top: 2px;">
-            <span>Declaro ser o representante legal do estabelecimento e aceito assinar eletronicamente este termo de vistoria (Lei nº 14.063/20).</span>
-        </label>
-        <div class="canvas-container">
-            <canvas id="signature-rep"></canvas>
-        </div>
-        <button class="btn btn-sm btn-secondary btn-clear-sig" data-type="rep">Limpar Assinatura</button>
-    `;
-    container.appendChild(repBox);
-    
-    // Bind inputs to state
-    const cpfInput = repBox.querySelector("#representative-cpf");
-    if (cpfInput) {
-        cpfInput.addEventListener("input", (e) => {
-            state.representativeCpf = e.target.value;
-            saveStateToStorage();
-        });
+    // 2. Append the representative signature box (if enabled)
+    if (state.includeRepSignature !== false) {
+        const repBox = document.createElement("div");
+        repBox.className = "signature-box";
+        
+        const labelRepText = state.establishmentAccomp ? `Assinatura de: ${state.establishmentAccomp}` : "Assinatura do Responsável por Acompanhar a Inspeção";
+        
+        repBox.innerHTML = `
+            <label id="sig-label-rep">${labelRepText}</label>
+            <div class="form-group" style="margin-top: 8px; margin-bottom: 12px; text-align: left;">
+                <label style="font-size: 0.8rem; margin-bottom: 4px;">CPF do Responsável (Opcional)</label>
+                <input type="text" id="representative-cpf" value="${state.representativeCpf || ''}" placeholder="Ex: 000.000.000-00" style="padding: 6px; height: auto; font-size: 0.9rem; width: 100%;">
+            </div>
+            <label class="checkbox-label" style="display: flex; gap: 8px; font-size: 0.8rem; margin-top: 8px; margin-bottom: 12px; font-weight: normal; cursor: pointer; text-align: left; line-height: 1.3; color: var(--text-main);">
+                <input type="checkbox" id="rep-legal-agreement" ${state.repLegalAgreement ? 'checked' : ''} style="width: auto; margin-top: 2px;">
+                <span>Declaro ser o responsável por acompanhar a inspeção e aceito assinar eletronicamente este termo de vistoria (Lei nº 14.063/20).</span>
+            </label>
+            <div class="canvas-container">
+                <canvas id="signature-rep"></canvas>
+            </div>
+            <button class="btn btn-sm btn-secondary btn-clear-sig" data-type="rep">Limpar Assinatura</button>
+        `;
+        container.appendChild(repBox);
+        
+        // Bind inputs to state
+        const cpfInput = repBox.querySelector("#representative-cpf");
+        if (cpfInput) {
+            cpfInput.addEventListener("input", (e) => {
+                state.representativeCpf = e.target.value;
+                saveStateToStorage();
+            });
+        }
+        const agreementCheck = repBox.querySelector("#rep-legal-agreement");
+        if (agreementCheck) {
+            agreementCheck.addEventListener("change", (e) => {
+                state.repLegalAgreement = e.target.checked;
+                saveStateToStorage();
+            });
+        }
+        
+        // Initialize representative pad
+        initRepSignatureCanvas();
     }
-    const agreementCheck = repBox.querySelector("#rep-legal-agreement");
-    if (agreementCheck) {
-        agreementCheck.addEventListener("change", (e) => {
-            state.repLegalAgreement = e.target.checked;
-            saveStateToStorage();
-        });
-    }
-    
-    // Initialize representative pad
-    initRepSignatureCanvas();
     
     // Attach clear events
     container.querySelectorAll(".btn-clear-sig").forEach(btn => {
@@ -1078,8 +1105,10 @@ function generateReport() {
     
     document.getElementById("rep-inspection-date").textContent = formatDate(state.inspectionDate);
     document.getElementById("rep-establishment-name").textContent = state.establishmentName || "(Não informado)";
+    document.getElementById("rep-establishment-sei").textContent = state.establishmentSei || "(Não informado)";
     document.getElementById("rep-establishment-cnpj").textContent = state.establishmentCnpj || "(Não informado)";
     document.getElementById("rep-establishment-rep").textContent = state.establishmentRepresentative || "(Não informado)";
+    document.getElementById("rep-establishment-accomp").textContent = state.establishmentAccomp || "(Não informado)";
     document.getElementById("rep-establishment-address").textContent = state.establishmentAddress || "(Não informado)";
     
     // Technical Representative
@@ -1109,13 +1138,16 @@ function generateReport() {
     // Generate authenticity code (SHA-256 of report data)
     const dataToHash = JSON.stringify({
         date: state.inspectionDate,
+        sei: state.establishmentSei,
         cnpj: state.establishmentCnpj,
         evaluations: state.evaluations,
         rt: state.establishmentRt,
         rtCouncil: state.establishmentRtCouncil,
         rep: state.establishmentRepresentative,
+        accomp: state.establishmentAccomp,
         repCpf: state.representativeCpf,
-        agreement: state.repLegalAgreement
+        agreement: state.repLegalAgreement,
+        includeRepSig: state.includeRepSignature
     });
     
     generateIntegrityHash(dataToHash).then(hash => {
@@ -1329,20 +1361,22 @@ function generateReport() {
             sigContainer.appendChild(col);
         });
         
-        if (state.signatures.rep) hasSignatures = true;
-        
-        // Add representative column
-        const repCol = document.createElement("div");
-        repCol.className = "report-sig-col";
-        repCol.innerHTML = `
-            <div class="sig-line">
-                ${state.signatures.rep ? `<img class="sig-image" src="${state.signatures.rep}" alt="Assinatura Responsável">` : ''}
-            </div>
-            <span class="sig-title">${state.establishmentRepresentative || 'Responsável pelo Local'}</span>
-            <span class="sig-subtitle">${state.representativeCpf ? `CPF: ${state.representativeCpf}` : 'Responsável pelo Estabelecimento'}</span>
-            <span class="sig-subtitle" style="font-size: 8pt; display: block; margin-top: 2px;">Ciente das constatações</span>
-        `;
-        sigContainer.appendChild(repCol);
+        // Add representative column (if enabled)
+        if (state.includeRepSignature !== false) {
+            if (state.signatures.rep) hasSignatures = true;
+            
+            const repCol = document.createElement("div");
+            repCol.className = "report-sig-col";
+            repCol.innerHTML = `
+                <div class="sig-line">
+                    ${state.signatures.rep ? `<img class="sig-image" src="${state.signatures.rep}" alt="Assinatura Responsável">` : ''}
+                </div>
+                <span class="sig-title">${state.establishmentAccomp || 'Responsável por Acompanhar'}</span>
+                <span class="sig-subtitle">${state.representativeCpf ? `CPF: ${state.representativeCpf}` : 'Acompanhou a Inspeção'}</span>
+                <span class="sig-subtitle" style="font-size: 8pt; display: block; margin-top: 2px;">Ciente das constatações</span>
+            `;
+            sigContainer.appendChild(repCol);
+        }
     }
     
     // Manage Word export visibility based on signatures presence
@@ -1786,6 +1820,17 @@ function setupEventListeners() {
     // Add inspector listener
     document.getElementById("btn-add-inspector").addEventListener("click", addInspector);
     
+    // Representative signature toggle listener
+    const includeRepSigCheck = document.getElementById("include-rep-signature");
+    if (includeRepSigCheck) {
+        includeRepSigCheck.checked = state.includeRepSignature !== false;
+        includeRepSigCheck.addEventListener("change", (e) => {
+            state.includeRepSignature = e.target.checked;
+            saveStateToStorage();
+            renderSignaturePadsUI();
+        });
+    }
+    
     // CNAE change dynamic listeners
     const cnaeInput = document.getElementById("activity-cnae");
     if (cnaeInput) {
@@ -1821,4 +1866,38 @@ function setupEventListeners() {
     document.getElementById("inspections-modal").addEventListener("click", (e) => {
         if (e.target.id === "inspections-modal") closeInspectionsModal();
     });
+
+    // Login form event listener
+    const loginForm = document.getElementById("login-form");
+    if (loginForm) {
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const user = document.getElementById("login-username").value.trim().toUpperCase();
+            const pass = document.getElementById("login-password").value.trim();
+            const errorEl = document.getElementById("login-error-msg");
+            
+            if (user === "VISALONDRINA" && pass === "123456") {
+                localStorage.setItem("visa_logged_in", "true");
+                const overlay = document.getElementById("login-overlay");
+                if (overlay) {
+                    overlay.classList.add("hidden");
+                }
+            } else {
+                if (errorEl) {
+                    errorEl.classList.remove("hidden");
+                }
+            }
+        });
+    }
+
+    // Logout button event listener
+    const btnLogout = document.getElementById("btn-logout");
+    if (btnLogout) {
+        btnLogout.addEventListener("click", () => {
+            if (confirm("Deseja realmente sair do sistema? Suas vistorias salvas no aparelho continuarão seguras.")) {
+                localStorage.removeItem("visa_logged_in");
+                window.location.reload();
+            }
+        });
+    }
 }

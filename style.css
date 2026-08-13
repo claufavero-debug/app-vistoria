@@ -1343,14 +1343,11 @@ select:focus {
 
 /* Custom App Logo Branding Styling */
 .header-logo-img {
-    width: 36px;
     height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1.5px solid var(--primary-light);
-    background: #ffffff;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
     margin-right: 10px;
-    box-shadow: var(--shadow-sm);
 }
 
 .logo-hero-container {
@@ -1363,29 +1360,22 @@ select:focus {
 }
 
 .logo-hero-img {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3.5px solid var(--primary-light);
-    box-shadow: var(--shadow-md);
-    background: #ffffff;
+    max-width: 100%;
+    max-height: 80px;
+    height: auto;
+    object-fit: contain;
     transition: var(--transition);
 }
 
 .logo-hero-img:hover {
-    transform: scale(1.04);
-    box-shadow: var(--shadow-lg);
+    transform: scale(1.02);
 }
 
 .report-header-logo-img {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #004d40;
-    background: #ffffff;
-    margin-right: 12px;
+    max-width: 100%;
+    max-height: 60px;
+    height: auto;
+    object-fit: contain;
     display: inline-block;
     vertical-align: middle;
 }
@@ -1553,4 +1543,71 @@ select:focus {
     padding-top: 15px;
     border-top: 2px dashed #cbd5e1;
     page-break-inside: avoid;
+}
+
+/* ==========================================================================
+   LOGIN SCREEN STYLING
+   ========================================================================== */
+.login-overlay-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 50%, var(--bg-card) 0%, var(--bg-app) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.login-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.login-logo-container {
+    margin-bottom: 20px;
+}
+
+.login-logo-img {
+    max-height: 60px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.login-card h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    margin-top: 0;
+}
+
+.login-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.login-error {
+    background-color: var(--danger-light);
+    color: var(--danger);
+    border: 1px solid var(--danger);
+    font-size: 0.82rem;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
 }
