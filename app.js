@@ -45,7 +45,7 @@ function initActiveChecklist() {
 function handleCnaeChange(rawCnae) {
     const digits = rawCnae.replace(/\D/g, '');
     const match = CNAE_MAP[digits];
-    if (match && state.activityName !== match.name) {
+    if (match && state.activityCnae !== match.cnae) {
         const hasEvaluations = Object.keys(state.evaluations).length > 0;
         if (!hasEvaluations || confirm(`Você digitou o CNAE do setor "${match.name}". Isto irá redefinir o checklist da vistoria e limpar as respostas atuais. Deseja continuar?`)) {
             state.activityName = match.name;
