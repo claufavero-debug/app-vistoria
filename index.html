@@ -107,7 +107,12 @@
                     </div>
                     <div class="form-group">
                         <label for="activity-name">Atividade Fiscalizada / Ramo</label>
-                        <input type="text" id="activity-name" placeholder="Ex: Educação Infantil - Creche">
+                        <input type="text" id="activity-name" list="activity-name-options" placeholder="Ex: Educação Infantil - Creche">
+                        <datalist id="activity-name-options">
+                            <option value="Educação Infantil - Creche">
+                            <option value="Comércio Varejista de Produtos Farmacêuticos (Drogaria)">
+                            <option value="Distribuidora de Produtos para a Saúde">
+                        </datalist>
                     </div>
                     <div class="form-group">
                         <label for="activity-cnae">Código CNAE</label>

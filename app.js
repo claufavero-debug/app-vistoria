@@ -7,8 +7,8 @@
 const CNAE_MAP = {
     "8511200": { cnae: "8511-2/00", name: "Educação Infantil - Creche", checklist: CHECKLIST_CRECHE, group: "creche" },
     
-    "4771701": { cnae: "4771-7/01", name: "Drogarias e Farmácias (EAC)", checklist: CHECKLIST_DROGARIA, group: "drogaria" },
-    "4771702": { cnae: "4771-7/02", name: "Drogarias e Farmácias (EAC)", checklist: CHECKLIST_DROGARIA, group: "drogaria" },
+    "4771701": { cnae: "4771-7/01", name: "Comércio Varejista de Produtos Farmacêuticos (Drogaria)", checklist: CHECKLIST_DROGARIA, group: "drogaria" },
+    "4771702": { cnae: "4771-7/02", name: "Comércio Varejista de Produtos Farmacêuticos (Drogaria)", checklist: CHECKLIST_DROGARIA, group: "drogaria" },
     
     "4664800": { cnae: "4664-8/00", name: "Distribuidora de Produtos para a Saúde", checklist: CHECKLIST_DISTRIBUIDORA, group: "distribuidora" },
     "4645103": { cnae: "4645-1/03", name: "Distribuidora de Produtos para a Saúde", checklist: CHECKLIST_DISTRIBUIDORA, group: "distribuidora" },
@@ -74,6 +74,48 @@ function handleCnaeChange(rawCnae) {
             const cnaeInput = document.getElementById("activity-cnae");
             if (cnaeInput) cnaeInput.value = state.activityCnae;
         }
+    }
+}
+
+function handleActivityNameChange(name) {
+    const term = (name || "").trim().toLowerCase();
+    if (!term) return;
+
+    let bestMatchKey = null;
+    
+    // 1. Try exact match on name
+    for (const key of Object.keys(CNAE_MAP)) {
+        if (CNAE_MAP[key].name.toLowerCase() === term) {
+            bestMatchKey = key;
+            break;
+        }
+    }
+    
+    // 2. Try partial match on name
+    if (!bestMatchKey) {
+        for (const key of Object.keys(CNAE_MAP)) {
+            if (CNAE_MAP[key].name.toLowerCase().includes(term)) {
+                bestMatchKey = key;
+                break;
+            }
+        }
+    }
+
+    // 3. Try partial match on group description
+    if (!bestMatchKey) {
+        for (const group of Object.keys(CNAE_GROUPS)) {
+            const match = CNAE_GROUPS[group].find(item => item.desc.toLowerCase().includes(term));
+            if (match) {
+                bestMatchKey = Object.keys(CNAE_MAP).find(key => CNAE_MAP[key].group === group);
+                break;
+            }
+        }
+    }
+
+    if (bestMatchKey) {
+        const matchObj = CNAE_MAP[bestMatchKey];
+        // Trigger checklist change using the matched CNAE
+        handleCnaeChange(matchObj.cnae);
     }
 }
 
@@ -1954,6 +1996,14 @@ function setupEventListeners() {
             if (digits.length === 7) {
                 handleCnaeChange(val);
             }
+        });
+    }
+
+    // Activity name change dynamic listeners (for name search)
+    const activityNameInput = document.getElementById("activity-name");
+    if (activityNameInput) {
+        activityNameInput.addEventListener("change", (e) => {
+            handleActivityNameChange(e.target.value);
         });
     }
 
