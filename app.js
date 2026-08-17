@@ -524,7 +524,13 @@ function renderChecklistCards(items) {
             
             <div class="observation-panel ${itemVal.status ? '' : 'hidden'}" id="panel-obs-${item.id}">
                 <div class="form-group">
-                    <label>Observações do Item (Opcional)</label>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <label style="margin: 0;">Observações do Item (Opcional)</label>
+                        <button type="button" class="btn btn-secondary btn-sm btn-mic" id="btn-mic-${item.id}" title="Gravar por voz" style="display: flex; align-items: center; gap: 4px; padding: 3px 8px; font-size: 0.75rem;">
+                            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mic-icon"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                            <span class="mic-text">Gravar Voz</span>
+                        </button>
+                    </div>
                     <textarea class="observation-field" id="obs-${item.id}" placeholder="Adicione observações ou ressalvas sobre este item se achar necessário...">${itemVal.obs || ''}</textarea>
                 </div>
             </div>
@@ -534,7 +540,9 @@ function renderChecklistCards(items) {
                     <label>Legislação / Embasamento Legal (Editável)</label>
                     <input type="text" class="legislation-field" id="leg-${item.id}" value="${itemVal.legislation}">
                 </div>
-                
+            </div>
+            
+            <div class="photo-panel ${(itemVal.status === 'S' || itemVal.status === 'N') ? '' : 'hidden'}" id="panel-photos-${item.id}">
                 <div class="photo-upload-row">
                     <button class="btn btn-secondary btn-photo-capture" id="btn-capture-${item.id}">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
@@ -575,6 +583,14 @@ function setupCardEvents(itemId) {
             if (!state.evaluations[itemId]) state.evaluations[itemId] = {};
             state.evaluations[itemId].obs = e.target.value;
             saveStateToStorage();
+        });
+    }
+
+    // Mic recording button click
+    const micBtn = card.querySelector(`#btn-mic-${itemId}`);
+    if (micBtn) {
+        micBtn.addEventListener("click", () => {
+            toggleSpeechRecognition(itemId);
         });
     }
     
@@ -634,6 +650,16 @@ function updateItemStatus(itemId, status) {
                 ncPanel.classList.remove("hidden");
             } else {
                 ncPanel.classList.add("hidden");
+            }
+        }
+        
+        // Toggle Photo panel (visible for S or N)
+        const photoPanel = document.getElementById(`panel-photos-${itemId}`);
+        if (photoPanel) {
+            if (status === 'S' || status === 'N') {
+                photoPanel.classList.remove("hidden");
+            } else {
+                photoPanel.classList.add("hidden");
             }
         }
     }
@@ -754,6 +780,84 @@ function removePhotoAtIndex(itemId, index) {
         saveStateToStorage();
         renderPhotosGrid(itemId);
     }
+}
+
+// ==========================================================================
+// SPEECH RECOGNITION (TRANSCRIPTION)
+// ==========================================================================
+let activeRecognition = null;
+let activeMicButtonId = null;
+
+function toggleSpeechRecognition(itemId) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+        alert("A transcrição de voz não é suportada neste navegador. Recomendamos usar o Google Chrome ou Safari.");
+        return;
+    }
+
+    const btn = document.getElementById(`btn-mic-${itemId}`);
+    const textarea = document.getElementById(`obs-${itemId}`);
+    if (!btn || !textarea) return;
+
+    const micText = btn.querySelector(".mic-text");
+
+    // If there is already a recognition running
+    if (activeRecognition) {
+        activeRecognition.stop();
+        // If it was for the same item, we just stop it and return
+        if (activeMicButtonId === `btn-mic-${itemId}`) {
+            return;
+        }
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = "pt-BR";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onstart = () => {
+        activeRecognition = recognition;
+        activeMicButtonId = `btn-mic-${itemId}`;
+        btn.style.backgroundColor = "var(--danger-light)";
+        btn.style.color = "var(--danger)";
+        btn.style.borderColor = "var(--danger)";
+        if (micText) micText.textContent = "Gravando...";
+        btn.classList.add("recording-pulse");
+    };
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        if (transcript) {
+            const currentVal = textarea.value.trim();
+            textarea.value = currentVal ? `${currentVal} ${transcript}` : transcript;
+            
+            // Trigger input event to save to localStorage
+            const e = new Event("input", { bubbles: true });
+            textarea.dispatchEvent(e);
+        }
+    };
+
+    recognition.onerror = (event) => {
+        console.error("Speech recognition error:", event.error);
+        if (event.error === 'not-allowed') {
+            alert("Permissão para usar o microfone foi negada. Por favor, habilite o microfone nas configurações do seu navegador.");
+        }
+    };
+
+    recognition.onend = () => {
+        btn.style.backgroundColor = "var(--bg-app)";
+        btn.style.color = "var(--text-secondary)";
+        btn.style.borderColor = "var(--border-color)";
+        if (micText) micText.textContent = "Gravar Voz";
+        btn.classList.remove("recording-pulse");
+        
+        if (activeMicButtonId === `btn-mic-${itemId}`) {
+            activeRecognition = null;
+            activeMicButtonId = null;
+        }
+    };
+
+    recognition.start();
 }
 
 // ==========================================================================
@@ -1282,7 +1386,14 @@ function generateReport() {
                     <td class="id-col">${item.id}</td>
                     <td><strong>${item.category}</strong></td>
                     <td>${item.description}</td>
-                    <td>${val.obs ? `<em>${val.obs}</em>` : '<span style="color: #94a3b8;">Nenhuma observação</span>'}</td>
+                    <td>
+                        ${val.obs ? `<em>${val.obs}</em>` : '<span style="color: #94a3b8;">Nenhuma observação</span>'}
+                        ${val.photos && val.photos.length > 0 ? `
+                            <div style="display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap;">
+                                ${val.photos.map(p => `<img src="${p}" style="height: 60px; width: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #cbd5e1;" alt="Foto do Item ${item.id}">`).join("")}
+                            </div>
+                        ` : ''}
+                    </td>
                 </tr>
             `;
         });
