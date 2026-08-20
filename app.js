@@ -13,7 +13,15 @@ const CNAE_MAP = {
     "4664800": { cnae: "4664-8/00", name: "Distribuidora de Produtos para a Saúde", checklist: CHECKLIST_DISTRIBUIDORA, group: "distribuidora" },
     "4645103": { cnae: "4645-1/03", name: "Distribuidora de Produtos para a Saúde", checklist: CHECKLIST_DISTRIBUIDORA, group: "distribuidora" },
     "4645102": { cnae: "4645-1/02", name: "Distribuidora de Produtos para a Saúde", checklist: CHECKLIST_DISTRIBUIDORA, group: "distribuidora" },
-    "4645101": { cnae: "4645-1/01", name: "Distribuidora de Produtos para a Saúde", checklist: CHECKLIST_DISTRIBUIDORA, group: "distribuidora" }
+    "4645101": { cnae: "4645-1/01", name: "Distribuidora de Produtos para a Saúde", checklist: CHECKLIST_DISTRIBUIDORA, group: "distribuidora" },
+
+    "4646001": { cnae: "4646-0/01", name: "Distribuidora de Cosméticos e Saneantes", checklist: CHECKLIST_COSMETICOS, group: "distribuidora_cosmeticos" },
+    "4649408": { cnae: "4649-4/08", name: "Distribuidora de Cosméticos e Saneantes", checklist: CHECKLIST_COSMETICOS, group: "distribuidora_cosmeticos" },
+
+    "4644301": { cnae: "4644-3/01", name: "Distribuidora e Transportadora de Medicamentos", checklist: CHECKLIST_MEDICAMENTOS, group: "distribuidora_medicamentos" },
+    "4930201": { cnae: "4930-2/01", name: "Distribuidora e Transportadora de Medicamentos", checklist: CHECKLIST_MEDICAMENTOS, group: "distribuidora_medicamentos" },
+    "4930202": { cnae: "4930-2/02", name: "Distribuidora e Transportadora de Medicamentos", checklist: CHECKLIST_MEDICAMENTOS, group: "distribuidora_medicamentos" },
+    "4930203": { cnae: "4930-2/03", name: "Distribuidora e Transportadora de Medicamentos", checklist: CHECKLIST_MEDICAMENTOS, group: "distribuidora_medicamentos" }
 };
 
 const CNAE_GROUPS = {
@@ -29,6 +37,16 @@ const CNAE_GROUPS = {
         { cnae: "4645-1/03", desc: "Comércio atacadista de produtos odontológicos" },
         { cnae: "4645-1/02", desc: "Comércio atacadista de próteses e artigos de ortopedia" },
         { cnae: "4645-1/01", desc: "Comércio atacadista de instrumentos e materiais para uso médico, cirúrgico, hospitalar e de laboratórios" }
+    ],
+    "distribuidora_cosmeticos": [
+        { cnae: "4646-0/01", desc: "Comércio atacadista de cosméticos e produtos de perfumaria" },
+        { cnae: "4649-4/08", desc: "Comércio atacadista de produtos de higiene, limpeza e conservação domiciliar" }
+    ],
+    "distribuidora_medicamentos": [
+        { cnae: "4644-3/01", desc: "Comércio atacadista de medicamentos e drogas de uso humano" },
+        { cnae: "4930-2/01", desc: "Transporte rodoviário de carga, exceto produtos perigosos e mudanças, municipal" },
+        { cnae: "4930-2/02", desc: "Transporte rodoviário de carga, exceto produtos perigosos e mudanças, intermunicipal, interestadual e internacional" },
+        { cnae: "4930-2/03", desc: "Transporte rodoviário de produtos perigosos" }
     ]
 };
 
