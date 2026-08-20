@@ -501,7 +501,7 @@ function renderCategoryTabs() {
         if (idx === currentCategoryIndex) btn.classList.add("active");
         
         btn.innerHTML = `
-            <span>${cat}</span>
+            <span>${cat.replace(/\//g, '/<wbr>')}</span>
             <span class="cat-indicator" id="badge-cat-${idx}">0/0</span>
         `;
         

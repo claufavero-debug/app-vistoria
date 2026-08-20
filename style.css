@@ -385,6 +385,13 @@ select:focus {
     transition: var(--transition);
 }
 
+.category-btn span:first-child {
+    flex: 1;
+    margin-right: 12px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
 .category-btn:hover {
     background-color: var(--neutral-light);
     color: var(--text-primary);
