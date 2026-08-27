@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Vistoria Sanitária - Londrina</title>
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=7">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,14 +107,13 @@
                     </div>
                     <div class="form-group">
                         <label for="activity-name">Atividade Fiscalizada / Ramo</label>
-                        <input type="text" id="activity-name" list="activity-name-options" placeholder="Ex: Educação Infantil - Creche">
-                        <datalist id="activity-name-options">
-                            <option value="Educação Infantil - Creche">
-                            <option value="Comércio Varejista de Produtos Farmacêuticos (Drogaria)">
-                            <option value="Distribuidora de Produtos para a Saúde">
-                            <option value="Distribuidora de Cosméticos e Saneantes">
-                            <option value="Distribuidora e Transportadora de Medicamentos">
-                        </datalist>
+                        <select id="activity-name">
+                            <option value="Educação Infantil - Creche">Educação Infantil - Creche</option>
+                            <option value="Comércio Varejista de Produtos Farmacêuticos (Drogaria)">Comércio Varejista de Produtos Farmacêuticos (Drogaria)</option>
+                            <option value="Distribuidora de Produtos para a Saúde">Distribuidora de Produtos para a Saúde</option>
+                            <option value="Distribuidora de Cosméticos e Saneantes">Distribuidora de Cosméticos e Saneantes</option>
+                            <option value="Distribuidora e Transportadora de Medicamentos">Distribuidora e Transportadora de Medicamentos</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="activity-cnae">Código CNAE</label>
@@ -408,6 +407,6 @@
     <script src="database_cosmeticos.js"></script>
     <script src="database_medicamentos.js"></script>
     <!-- Core Application Controller -->
-    <script src="app.js?v=6"></script>
+    <script src="app.js?v=7"></script>
 </body>
 </html>
