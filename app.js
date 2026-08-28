@@ -21,7 +21,10 @@ const CNAE_MAP = {
     "4644301": { cnae: "4644-3/01", name: "Distribuidora e Transportadora de Medicamentos", checklist: CHECKLIST_MEDICAMENTOS, group: "distribuidora_medicamentos" },
     "4930201": { cnae: "4930-2/01", name: "Distribuidora e Transportadora de Medicamentos", checklist: CHECKLIST_MEDICAMENTOS, group: "distribuidora_medicamentos" },
     "4930202": { cnae: "4930-2/02", name: "Distribuidora e Transportadora de Medicamentos", checklist: CHECKLIST_MEDICAMENTOS, group: "distribuidora_medicamentos" },
-    "4930203": { cnae: "4930-2/03", name: "Distribuidora e Transportadora de Medicamentos", checklist: CHECKLIST_MEDICAMENTOS, group: "distribuidora_medicamentos" }
+    "4930203": { cnae: "4930-2/03", name: "Distribuidora e Transportadora de Medicamentos", checklist: CHECKLIST_MEDICAMENTOS, group: "distribuidora_medicamentos" },
+
+    "8640209": { cnae: "8640-2/09", name: "Serviço de Endoscopia", checklist: CHECKLIST_ENDOSCOPIA, group: "endoscopia" },
+    "8711502": { cnae: "8711-5/02", name: "Instituição de Longa Permanência para Idosos (ILPI)", checklist: CHECKLIST_ILPI, group: "ilpi" }
 };
 
 const CNAE_GROUPS = {
@@ -47,6 +50,12 @@ const CNAE_GROUPS = {
         { cnae: "4930-2/01", desc: "Transporte rodoviário de carga, exceto produtos perigosos e mudanças, municipal" },
         { cnae: "4930-2/02", desc: "Transporte rodoviário de carga, exceto produtos perigosos e mudanças, intermunicipal, interestadual e internacional" },
         { cnae: "4930-2/03", desc: "Transporte rodoviário de produtos perigosos" }
+    ],
+    "endoscopia": [
+        { cnae: "8640-2/09", desc: "Serviços de diagnóstico por registro gráfico, por métodos ópticos e por imagem, exceto radiologia e diagnóstico por imagem, com ou sem o uso de contrastes (Endoscopia)" }
+    ],
+    "ilpi": [
+        { cnae: "8711-5/02", desc: "Instituições de longa permanência para idosos (ILPI)" }
     ]
 };
 
