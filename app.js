@@ -6,6 +6,7 @@
 
 const CNAE_MAP = {
     "8511200": { cnae: "8511-2/00", name: "Educação Infantil - Creche", checklist: CHECKLIST_CRECHE, group: "creche" },
+    "8512100": { cnae: "8512-1/00", name: "Educação Infantil - Creche", checklist: CHECKLIST_CRECHE, group: "creche" },
     
     "4771701": { cnae: "4771-7/01", name: "Comércio Varejista de Produtos Farmacêuticos (Drogaria)", checklist: CHECKLIST_DROGARIA, group: "drogaria" },
     "4771702": { cnae: "4771-7/02", name: "Comércio Varejista de Produtos Farmacêuticos (Drogaria)", checklist: CHECKLIST_DROGARIA, group: "drogaria" },
@@ -29,7 +30,8 @@ const CNAE_MAP = {
 
 const CNAE_GROUPS = {
     "creche": [
-        { cnae: "8511-2/00", desc: "Educação Infantil - Creche" }
+        { cnae: "8511-2/00", desc: "Educação Infantil - Creche" },
+        { cnae: "8512-1/00", desc: "Educação Infantil - Pré-escola" }
     ],
     "drogaria": [
         { cnae: "4771-7/01", desc: "Comércio varejista de produtos farmacêuticos, com manipulação de fórmulas" },

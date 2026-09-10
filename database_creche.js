@@ -1,384 +1,444 @@
-// ROTEIRO DE VISTORIA SANITÁRIA - EDUCAÇÃO INFANTIL (CRECHE)
+// ROTEIRO DE INSPEÇÃO EDUCAÇÃO INFANTIL (CRECHE)
 const CHECKLIST_CRECHE = [
-    // Category: Infraestrutura
     {
-        id: "12323",
-        category: "Infraestrutura",
-        description: "A escola não possui comunicação/acesso ou espaços de uso comum com domicílio particular ou estabelecimento comercial?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RESOLUÇÃO CME/BH Nº 001/2015 Art. 49 § 3º"
+        "id": "1",
+        "category": "DOCUMENTAÇÃO",
+        "description": "Projetos físicos aprovados e arquivados pela gerência para consulta.",
+        "risk": "",
+        "legislation": "Item 3.4.1 / 4.1, Res. SESA 162/05"
     },
     {
-        id: "11064",
-        category: "Infraestrutura",
-        description: "A fiação elétrica é protegida e devidamente embutida?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 item 7.2 C/C DM 5616/87 Art.70 Inc VI"
+        "id": "2",
+        "category": "DOCUMENTAÇÃO",
+        "description": "Certificado do Corpo de Bombeiros.",
+        "risk": "",
+        "legislation": "Item 4.6 / Infra 6 e 7, Res. SESA 162/05"
     },
     {
-        id: "1699",
-        category: "Infraestrutura",
-        description: "A escola possui sistema de proteção em janelas, aberturas e escadas (grades/redes) de forma a garantir a segurança das crianças?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 Item 11.a"
+        "id": "3",
+        "category": "DOCUMENTAÇÃO",
+        "description": "Limpeza/desinfecção semestral do reservatório de água e bebedouro.",
+        "risk": "",
+        "legislation": "Saúde 9, Res. SESA 162/05"
     },
     {
-        id: "10196",
-        category: "Infraestrutura",
-        description: "Possui pisos, paredes, revestimentos e divisórias, feitos de materiais lisos, laváveis, impermeáveis e íntegos?",
-        risk: "maior",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 Item 10.1.a"
+        "id": "4",
+        "category": "DOCUMENTAÇÃO",
+        "description": "Certificado de controle de pragas.",
+        "risk": "",
+        "legislation": "Art. 320, Decr. Est. 5711/02"
     },
     {
-        id: "1704",
-        category: "Infraestrutura",
-        description: "Os vidros de portas ou painéis, que chegam até 0,50m do piso, são do tipo não estilhaçável e possuem proteção contra quebras?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 Item 11. e"
+        "id": "5",
+        "category": "DOCUMENTAÇÃO",
+        "description": "Comprovante de contratação de Responsável Técnico (RT) em Nutrição.",
+        "risk": "",
+        "legislation": "Item 4.8 / Saúde 23, Res. SESA 162/05"
     },
     {
-        id: "10197",
-        category: "Infraestrutura",
-        description: "A iluminação e ventilação são suficientes e se encontram em condições adequadas?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 Item 7.2 C/C DM 5616/87 Art.70 inc VI"
+        "id": "6",
+        "category": "DOCUMENTAÇÃO",
+        "description": "Capacitações contínuas (manipulação alim., 1º socorros).",
+        "risk": "",
+        "legislation": "Manipuladores (Item 4) Res. SESA 162/05, Item 4.6.7, RDC 216/04 e Lei 13722/18"
     },
     {
-        id: "4208",
-        category: "Infraestrutura",
-        description: "Possui sistema de abastecimento de água ligado à rede pública?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 83"
+        "id": "7",
+        "category": "DOCUMENTAÇÃO",
+        "description": "Certificado de limpeza do ar condicionado (PMOC).",
+        "risk": "",
+        "legislation": "Saúde 4 da Res. SESA 162/05, Lei 13589/18 e Port. MS 3523/98"
     },
     {
-        id: "10846",
-        category: "Infraestrutura",
-        description: "A rede de esgoto está ligada à rede oficial e se encontra em perfeitas condições de funcionamento?",
-        risk: "maior",
-        legislation: "LM 7031/96 Art. 83"
+        "id": "8",
+        "category": "INFRAESTRUTURA GERAL E EDIFICAÇÃO",
+        "description": "Pátio Descoberto (3,0m²/criança, 30% turno), drenado declividade para escoamento de água de chuva",
+        "risk": "",
+        "legislation": "Tab. Pátios, Res. SESA 162/05"
     },
     {
-        id: "11088",
-        category: "Infraestrutura",
-        description: "As redes de esgotos, fossa (quando existentes) e caixas de gordura estão em bom estado de conservação e funcionamento?",
-        risk: "maior",
-        legislation: "LM 7031/96 Art. 85"
+        "id": "9",
+        "category": "INFRAESTRUTURA GERAL E EDIFICAÇÃO",
+        "description": "Pátio Coberto (2,0m²/criança, 30% turno), boa ventilação",
+        "risk": "",
+        "legislation": "Tab. Pátios, Res. SESA 162/05"
     },
     {
-        id: "11214",
-        category: "Infraestrutura",
-        description: "Possui ralos com sistema \"abre e fecha\", mantendo-os fechados quando não estiverem sendo usados?",
-        risk: "menor",
-        legislation: "DM 5616/96 Art. 70 Inc.V C/C LM 7031/96 Art. 91"
+        "id": "10",
+        "category": "INFRAESTRUTURA GERAL E EDIFICAÇÃO",
+        "description": "Circulação (corredores, rampas, escadas) com 1,50m de largura, antiderrapante, corrimão/guarda-corpo.",
+        "risk": "",
+        "legislation": "Circulação (Itens 1-3), Res. SESA 162/05"
     },
     {
-        id: "11197",
-        category: "Infraestrutura",
-        description: "Possui filtros/bebedouros para água que atendam a demanda sendo vedado o uso de jato inclinado?",
-        risk: "critico",
-        legislation: "DM 5616/87 art. 76 Inc. VIII"
+        "id": "11",
+        "category": "INFRAESTRUTURA GERAL E EDIFICAÇÃO",
+        "description": "Iluminação natural e artificial em condições adequadas",
+        "risk": "",
+        "legislation": "Padrão Salas / Infra 5, Res. SESA 162/05"
     },
     {
-        id: "2092",
-        category: "Infraestrutura",
-        description: "Possui instalações sanitárias completas, adequadas e suficientes para atender aos funcionários da creche?",
-        risk: "critico",
-        legislation: "DM 5616/87 Art. 152 § 1º E Art. 78 Inc. III, IV e V"
+        "id": "12",
+        "category": "INFRAESTRUTURA GERAL E EDIFICAÇÃO",
+        "description": "Ventilação natural e cruzada em condições adequadas",
+        "risk": "",
+        "legislation": "Padrão Salas (Item 5), Res. SESA 162/05"
     },
     {
-        id: "11111",
-        category: "Infraestrutura",
-        description: "Existe armário para guarda de vestuário e bens pessoais dos funcionários?",
-        risk: "menor",
-        legislation: "DM 5616/87 Art. 80 VI"
+        "id": "13",
+        "category": "INFRAESTRUTURA GERAL E EDIFICAÇÃO",
+        "description": "Portas com dimensão mínima (0,80x2,10m) e acionamento seguro - Proibida maçaneta de bola.",
+        "risk": "",
+        "legislation": "Padrão Salas (Item 7 e 9), Res. SESA 162/05"
     },
     {
-        id: "11205",
-        category: "Infraestrutura",
-        description: "Possui local para guardar, de forma individual, os materiais de higiene, banho e sono das crianças?",
-        risk: "menor",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RESOLUÇÃO CME/BH Nº 001/2015 Art. 51 Inc. V"
+        "id": "14",
+        "category": "INFRAESTRUTURA GERAL E EDIFICAÇÃO",
+        "description": "Janelas com peitoril mínimo de 0,70m, ventarola superior e proteção contra quedas (1º pav.).",
+        "risk": "",
+        "legislation": "Padrão Salas (Item 6 e 8), Res. SESA 162/05"
     },
     {
-        id: "10198",
-        category: "Infraestrutura",
-        description: "Possui lavanderia dotada de equipamentos adequados?",
-        risk: "menor",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 Item 9.4.4"
+        "id": "15",
+        "category": "INFRAESTRUTURA GERAL E EDIFICAÇÃO",
+        "description": "Instalações elétricas embutidas, íntegras, aterradas e protegidas contra acidentes.",
+        "risk": "",
+        "legislation": "Padrão Salas / Infra 5, Res. SESA 162/05"
     },
     {
-        id: "10199",
-        category: "Infraestrutura",
-        description: "As creches de pequeno porte (até 50 crianças) possuem armário para guarda da roupa limpa e as de médio e grande porte (acima de 50 crianças) possuem uma sala para guarda da referida roupa?",
-        risk: "menor",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 Item 9.4.5"
+        "id": "16",
+        "category": "INFRAESTRUTURA GERAL E EDIFICAÇÃO",
+        "description": "Pisos íntegros, contínuos, laváveis, antiderrapantes - Proibido carpete/forração.",
+        "risk": "",
+        "legislation": "Padrão Salas (Item 10), Res. SESA 162/05"
     },
     {
-        id: "5769",
-        category: "Infraestrutura",
-        description: "O depósito de material de limpeza (DML) possui área suficiente e encontra-se limpo e organizado?",
-        risk: "menor",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RESOLUÇÃO CME/BH Nº 001/2015 Art. 50 Inc. XIV"
+        "id": "17",
+        "category": "INFRAESTRUTURA GERAL E EDIFICAÇÃO",
+        "description": "Paredes lisas e laváveis - Proibida parede de vidro (exceto tijolo de vidro).",
+        "risk": "",
+        "legislation": "Padrão Salas (Item 11), Res. SESA 162/05"
     },
     {
-        id: "2511",
-        category: "Infraestrutura",
-        description: "Existe um recinto ou armário para a guarda do material de limpeza utilizado na instituição fora do alcance das crianças?",
-        risk: "menor",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RESOLUÇÃO CME/BH Nº 001/2015 art. 50 Inc. XIV"
+        "id": "18",
+        "category": "INFRAESTRUTURA GERAL E EDIFICAÇÃO",
+        "description": "Tetos em laje ou forro contínuo de cor clara - Proibido forro treliçado.",
+        "risk": "",
+        "legislation": "Padrão Salas (Item 12), Res. SESA 162/05"
     },
     {
-        id: "10107",
-        category: "Infraestrutura",
-        description: "O estabelecimento se encontra livre de condições que propiciem alimentação, proliferação ou abrigo de animais sinantrópicos?",
-        risk: "critico",
-        legislation: "LM 7031/96 art. 91 C/C RESOLUÇÃO CME/BH N° 001/2015 Art. 50 Inc. XIV"
+        "id": "19",
+        "category": "INFRAESTRUTURA DAS SALAS",
+        "description": "Berçário I e II (0-2 anos): dimensionamento mínimo de 2,20 m² por criança.",
+        "risk": "",
+        "legislation": "Tab. Berçário I e II, Res. SESA 162/05"
     },
     {
-        id: "11337",
-        category: "Infraestrutura",
-        description: "Existem lixeiras íntegras em quantidade suficiente, constituídas de material lavável, providas de saco plástico na cor adequada e de tampas acionadas sem contato manual e devidamente identificadas com descrição e symbologia?",
-        risk: "maior",
-        legislation: "DM 16.509/16 ANEXO I Item 2.5"
-    },
-
-    // Category: Berçário (0 a 1 ano)
-    {
-        id: "1710",
-        category: "Berçário (0 a 1 ano)",
-        description: "O berçário respeita os seguintes limites: área mínima de 2,50 m² por berço, acomodação máxima de 15 crianças e distância mínima entre os berços e entre esses e as paredes de 0,50m?",
-        risk: "maior",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 Item 9.3.1 \"A\", \"B\" e \"E\""
+        "id": "20",
+        "category": "INFRAESTRUTURA DAS SALAS",
+        "description": "Solário anexo aos berçários (2,50m²/criança, máx. 30%), lavável, drenado, sem plantas.",
+        "risk": "",
+        "legislation": "Berçário I (Item 16), Res. SESA 162/05"
     },
     {
-        id: "2358",
-        category: "Berçário (0 a 1 ano)",
-        description: "As janelas do berçário, sala de repouso, lavanderia e quarto de observação se encontram teladas?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 Item 10.1"
+        "id": "21",
+        "category": "INFRAESTRUTURA DAS SALAS",
+        "description": "Salas de Maternais e Pré-Escolas: dimensionamento mínimo de 1,50 m² por criança.",
+        "risk": "",
+        "legislation": "Tab. Maternais e Pré-Esc., Res. SESA 162/05"
     },
     {
-        id: "1716",
-        category: "Berçário (0 a 1 ano)",
-        description: "O berçário possui espaços exclusivos para banhos de sol, com acesso que permita o trânsito de carrinhos de bebê?",
-        risk: "maior",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 item 9.3.2 C/C RESOLUÇÃO CME/BH Nº 001/2015 Art. 51 Inc. III"
+        "id": "22",
+        "category": "INFRAESTRUTURA DAS SALAS",
+        "description": "Lavatório (Berçário II ao Pré II) adaptado à altura das crianças",
+        "risk": "",
+        "legislation": "Padrão Salas (lavatórios), Res. SESA 162/05"
     },
     {
-        id: "10432",
-        category: "Berçário (0 a 1 ano)",
-        description: "Todos os móveis almofadados, incluindo os colchões e colchonetes, estão revestidos de material lavável e impermeável, com todas as faces íntegras?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RESOLUÇÃO CME/BH Nº 001/2015 Art. 51 Inc.VII"
-    },
-
-    // Category: Fraldário e Lactário
-    {
-        id: "12452",
-        category: "Fraldário e Lactário",
-        description: "Possui bancada para trocas de fraldas, com dimensões mínimas de 100cm x 80cm e altura em torno de 85cm acompanhada de colchonete, sendo disponibilizados pia, álcool 70% e papel toalha?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RESOLUÇÃO CME/BH Nº 001/2015 Art. 51, VII, §3º"
+        "id": "23",
+        "category": "INFRAESTRUTURA DAS SALAS",
+        "description": "Mobiliários íntegros, sem arestas/cantos vivos, laváveis e adequados à faixa etária (colchonetes/ caminha empilhável).",
+        "risk": "",
+        "legislation": "Padrão Salas (Item 15), Res. SESA 162/05"
     },
     {
-        id: "12453",
-        category: "Fraldário e Lactário",
-        description: "Possui banheira contígua à bancada para troca de fraldas, com ducha de água quente e fria, para crianças de 0 a 1 ano?",
-        risk: "maior",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RESOLUÇÃO CME/BH Nº 001/2015 Art. 51 Inc.VII E §4º"
+        "id": "24",
+        "category": "INFRAESTRUTURA DAS SALAS",
+        "description": "Espelhos bem fixados, sem reflexo direto e inteiros em todas as salas.",
+        "risk": "",
+        "legislation": "Infra 18, Res. SESA 162/05"
     },
     {
-        id: "12454",
-        category: "Fraldário e Lactário",
-        description: "Possui alteamento de 40 centímetros para o local de banho das crianças de 1 a 2 anos?",
-        risk: "menor",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RESOLUÇÃO CME/BH Nº 001/2015 Art. 51 Inc.VIII E §5º"
+        "id": "25",
+        "category": "INSTALAÇÕES SANITÁRIAS E HIGIENE INFANTIL",
+        "description": "Sanitário Berçário: anexo, 1 vaso/40 cçs, 1 lavatório/40 cçs, 1 trocador impermeável (1,10m) + 1 cuba/20 cçs, 1 chuveiro/20 cçs.",
+        "risk": "",
+        "legislation": "Sanitário Berçário, Res. SESA 162/05"
     },
     {
-        id: "2434",
-        category: "Fraldário e Lactário",
-        description: "Possui lactário destinado à limpeza, preparo, esterilização, guarda e distribuição das mamadeiras?",
-        risk: "critico",
-        legislation: "LM 7031 Art. 97 Inc. II"
+        "id": "26",
+        "category": "INSTALAÇÕES SANITÁRIAS E HIGIENE INFANTIL",
+        "description": "Sanitário Maternais: anexo/próximo, box sanitário sem porta, 1 vaso adaptado/15 cçs (mín. 2 vasos) , 1 lavatório/15 cçs (mín. 2 lav.).",
+        "risk": "",
+        "legislation": "Sanitário Maternal, Res. SESA 162/05"
     },
     {
-        id: "12440",
-        category: "Fraldário e Lactário",
-        description: "Possui geladeira exclusiva para armazenamento de mamadeiras?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 Item 9.4.1"
-    },
-
-    // Category: Salas e Sanitários
-    {
-        id: "12438",
-        category: "Salas e Sanitários",
-        description: "As salas de atividades garantem um mínimo de 1m² por criança, com ventilação direta e iluminação natural, que possa ser contemplada com a artificial?",
-        risk: "maior",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RESOLUÇÃO CME/BH Nº 001/2015 Art. 50 Inc.IV"
+        "id": "27",
+        "category": "INSTALAÇÕES SANITÁRIAS E HIGIENE INFANTIL",
+        "description": "Sanitário Pré: separado por sexo, box sanitário com porta e sem trinco, 1 vaso adaptado/15 cçs (mín. 2 vasos) , 1 lavatório/15 cçs (mín. 2 lav.).",
+        "risk": "",
+        "legislation": "Sanitários Pré, Res. SESA 162/05"
     },
     {
-        id: "1707",
-        category: "Salas e Sanitários",
-        description: "As salas de atividades possuem: número máximo de crianças adequado, acesso direto com o exterior e estantes seguras ou armários para guarda de material?",
-        risk: "menor",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 itens 9.3.3 \"b\", \"c\" e \"e\""
+        "id": "28",
+        "category": "INSTALAÇÕES SANITÁRIAS E HIGIENE INFANTIL",
+        "description": "Insumos de higiene: sabonete líquido, toalha descartável, lixeira com tampa/pedal",
+        "risk": "",
+        "legislation": "Infra 10/Saúde 7 e 10, Res. SESA 162/05"
     },
     {
-        id: "12439",
-        category: "Salas e Sanitários",
-        description: "Possui sala multiuso para atividades diferenciadas, com equipamentos e acessórios adequados?",
-        risk: "menor",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RESOLUÇÃO CME/BH Nº 001/2015 Art. 50 Inc. XV"
+        "id": "29",
+        "category": "INSTALAÇÕES SANITÁRIAS E HIGIENE INFANTIL",
+        "description": "Sanitários de funcionários: separados por sexo (1 vaso/40 func.), chuveiro quente para manipuladores (1/20 func.).",
+        "risk": "",
+        "legislation": "Sanitário Funcionários, Res. SESA 162/05"
     },
     {
-        id: "1706",
-        category: "Salas e Sanitários",
-        description: "Possui recreio descoberto, com área verde e a instalação de equipamentos de recreação (balanços, escorregas, caixas de areia etc.)?",
-        risk: "menor",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RDC 321/88 Item 9.3.7 E 9.3.6 ABNT e parâmetros de infraestrutura para educação infantil"
+        "id": "30",
+        "category": "INSTALAÇÕES SANITÁRIAS E HIGIENE INFANTIL",
+        "description": "Sanitário adaptado (PNE/PCD)",
+        "risk": "",
+        "legislation": "Res. SESA 1891/24 e NBR 9050"
     },
     {
-        id: "2093",
-        category: "Salas e Sanitários",
-        description: "As portas dos sanitários individuais das crianças são isentas de chaves e trincos?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RESOLUÇÃO CME/BH Nº 001/2015 Art. 50 Inc.X"
+        "id": "31",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Acesso direto e independente, sem comunicação com outras dependências que não façam parte da cozinha",
+        "risk": "",
+        "legislation": "Preparo local (Item 2) Res. SESA 162/05 e Item 4.1.1 RDC 216/04"
     },
     {
-        id: "11057",
-        category: "Salas e Sanitários",
-        description: "A instalação sanitária infantil possui: um vaso sanitário para cada 20 crianças; um lavatório com altura de 60cm para cada 20 crianças; chuveiros para banho que atendam a rotina?",
-        risk: "maior",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C RESOLUÇÃO CME/BH Nº 001/2015 Art. 50 Inc.X de \"a\" a \"c\""
-    },
-
-    // Category: Equipamentos e Medicamentos
-    {
-        id: "4225",
-        category: "Equipamentos e Medicamentos",
-        description: "Ausência de focos de insalubridade (lixo, água estagnada, insetos, roedores) nas dependências do estabelecimento e condições para infestação de pragas?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 91"
+        "id": "32",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Espaço adequado, com fluxo único, sem cruzamento de áreas.",
+        "risk": "",
+        "legislation": "Preparo local (Item 4) Res. SESA 162/05 e Item 4.1.2 RDC 216/04"
     },
     {
-        id: "11187",
-        category: "Equipamentos e Medicamentos",
-        description: "Possui bebedouros de jato inclinado, proibida sua localização em instalações sanitárias?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C DM 5616/87 Art. 154 C/C Parecer Técnico COMCIRA"
+        "id": "33",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Portas e janelas teladas nas aberturas externas, de fácil limpeza, com portas providas de fechamento automático",
+        "risk": "",
+        "legislation": "Preparo local (Item 9) Res. SESA 162/05 e Item 4.1.4 RDC 216/04"
     },
     {
-        id: "11167",
-        category: "Equipamentos e Medicamentos",
-        description: "Os produtos de limpeza possuem registro no Ministério da Saúde ou ANVISA?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C DF 79094/77 Reg. LF 6360/76 Art. 14"
+        "id": "34",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Guichê de distribuição (opcional) e abertos somente no momento da distribuição",
+        "risk": "",
+        "legislation": "Preparo local (Item 16) Res. SESA 162/05"
     },
     {
-        id: "5032",
-        category: "Equipamentos e Medicamentos",
-        description: "Os medicamentos são armazenados em local seguro, devidamente identificado e de acesso restrito a funcionários?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C LF 5991/73 Orientação SMSA/SMED"
-    },
-
-    // Category: Procedimentos
-    {
-        id: "5033",
-        category: "Procedimentos",
-        description: "A medicação é feita exclusivamente sob prescrição médica?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C LF 5991/73 Art. 6º"
+        "id": "35",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Iluminação com boa visibilidade, sem zonas de sombra",
+        "risk": "",
+        "legislation": "Preparo local (Item 10) Res. SESA 162/05 e Item 4.1.8 RDC 216/04"
     },
     {
-        id: "5030",
-        category: "Procedimentos",
-        description: "É respeitada a proibição de criação e/ou conservação de animais, que pela sua natureza ou quantidade sejam causa de insalubridade e/ou incomodidade?",
-        risk: "maior",
-        legislation: "DM 5616/87 Art. 183"
+        "id": "36",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Ventilação boa (evita a condensação de vapores) - Possui equipamento de ventilação e exaustão.",
+        "risk": "",
+        "legislation": "Preparo local (Item 11) Res. SESA 162/05 e Item 4.1.10 RDC 216/04"
     },
     {
-        id: "10194",
-        category: "Procedimentos",
-        description: "As áreas internas e externas do estabelecimento se encontram livres de objetos em desuso ou estranhos ao ambiente?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 91 C/C DM 5616/87 Art. 70 Inc XIV"
+        "id": "37",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Pia exclusiva para lavagem das mãos dos manipuladores c/ sabão líquido, toalha descartável e escova de unhas.",
+        "risk": "",
+        "legislation": "Saúde 8, Res. SESA 162/05 e Item 4.1.14, RDC 216/04"
     },
     {
-        id: "11336",
-        category: "Procedimentos",
-        description: "É feita a segregação dos resíduos no local e momento de sua geração?",
-        risk: "maior",
-        legislation: "LM 7031/96 Art. 97 Inc. II C/C RDC 222/18 Art.11"
+        "id": "38",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Mobiliário em quantidade suficiente, de superfície lisa, impermeável e lavável",
+        "risk": "",
+        "legislation": "Preparo local-equipamentos (Item 3) Res. SESA 162/05 e Item 4.1.15 RDC 216/04"
     },
     {
-        id: "14078",
-        category: "Procedimentos",
-        description: "Exige o uso de máscara em ambientes fechados (conforme regramento vigente)?",
-        risk: "informativo",
-        legislation: "DM 17992/2022 C/C PM 0375/2022"
-    },
-
-    // Category: Recursos Humanos
-    {
-        id: "543",
-        category: "Recursos Humanos",
-        description: "Os funcionários da limpeza e processamento usam EPIs obrigatórios (luvas, calçado fechado impermeável, avental impermeável, óculos)?",
-        risk: "maior",
-        legislation: "LM 7031/96 Art. 73 Inciso V"
-    },
-
-    // Category: Documentação
-    {
-        id: "6955",
-        category: "Documentação",
-        description: "As atividades constantes do Alvará de Localização e Ficha Cadastral coincidem com as atividades exercidas no local?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 19"
+        "id": "39",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Utensílios em bom estado de conservação, limpos, e conservado",
+        "risk": "",
+        "legislation": "Saúde 16 e preparo local-equipamentos (Item 2) Res. SESA 162/05 e Item 4.1.15 RDC 216/04"
     },
     {
-        id: "7615",
-        category: "Documentação",
-        description: "Há registros de limpeza e manutenção preventiva/corretiva incluindo a troca de filtros dos bebedouros?",
-        risk: "critico",
-        legislation: "DM 5616/87 Art. 154"
+        "id": "40",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Despensa arejada, boa iluminação, tela nas janelas e portas, com estrado ou prateleiras de fácil limpeza",
+        "risk": "",
+        "legislation": "Preparo local-equipamentos (Item 5) Res. SESA 162/05 e Item 4.7.6 RDC 216/04"
     },
     {
-        id: "531",
-        category: "Documentação",
-        description: "Possui comprovante de higienização dos reservatórios de água com intervalo máximo de seis meses?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc.V C/C DM 5616/87 Art. 5º"
+        "id": "41",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Refeitório: 1,00 m²/criança (ou sala de uso múltiplo 1,50m²), 1 lavatório/30 cçs, mobília compatível.",
+        "risk": "",
+        "legislation": "Refeitório/ Uso Múltiplo, Res. SESA 162/05"
     },
     {
-        id: "2270",
-        category: "Documentação",
-        description: "Existem medidas preventivas e corretivas de controle de pragas executado por empresa com alvará sanitário?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc.V C/C LM 7031/96 Art. 91"
+        "id": "42",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Lactário próximo ao berçário, acesso independente, tela milimétrica nas janelas e portas (fechamento automático). Área mínima com fluxo único (sem cruzamento de áreas).",
+        "risk": "",
+        "legislation": "Lactário, Res. SESA 162/05"
     },
     {
-        id: "13818",
-        category: "Documentação",
-        description: "O estabelecimento apresentou comprovação de análise do Plano de Manutenção, Operação e Controle (PMOC) e laudos de qualidade do ar?",
-        risk: "critico",
-        legislation: "LM 7031/96 Art. 97 Inc. V C/C PF 3523/98; Anvisa 09/2003"
-    },
-
-    // Category: Tabagismo
-    {
-        id: "7055",
-        category: "Tabagismo",
-        description: "Atende à obrigatoriedade de afixação e manutenção de avisos/cartazes alusivos à proibição do tabagismo em local visível?",
-        risk: "menor",
-        legislation: "LE 12.903/98 Art. 4"
+        "id": "43",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Lactário tem a descrição do preparo da fórmula láctea com registro de horários e consumo, higienização/desinfecção das mamadeiras",
+        "risk": "",
+        "legislation": "Alimentos (Item 13, 14 e 15), Res. SESA 162/05"
     },
     {
-        id: "8503",
-        category: "Tabagismo",
-        description: "Respeita a proibição do uso de produtos fumígenos em recinto público ou privado coletivo, total ou parcialmente fechado?",
-        risk: "maior",
-        legislation: "DF 8.262/14 Art. 3"
+        "id": "44",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Matéria-prima em boas condições, embalagem e rotulagem adequadas",
+        "risk": "",
+        "legislation": "Alimentos (Item 1 e 2) Res. SESA 162/05 e Item 4.7.3 e 4.7.5, RDC 216/04"
+    },
+    {
+        "id": "45",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Lavagem de hortifruti em água corrente e imersão em solução desinfetante (conforme instrução do fabricante - diluição e tempo de contato).",
+        "risk": "",
+        "legislation": "Alimentos (Item 6) Res. SESA 162/05 e Item 4.8.19, RDC 216/04"
+    },
+    {
+        "id": "46",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Descongelamento sob refrigeração",
+        "risk": "",
+        "legislation": "Alimentos (Item 8) Res. SESA 162/05 e Item 4.8.13 RDC 216/04"
+    },
+    {
+        "id": "47",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Sobras de alimentos com descarte imediato",
+        "risk": "",
+        "legislation": "Alimentos (Item 9) Res. SESA 162/05"
+    },
+    {
+        "id": "48",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Amostra controle de 200 g dos alimentos preparados, conservados sob refrigeração por 72 horas - Identificação do produto, data da produção e horário",
+        "risk": "",
+        "legislation": "Alimentos (Item 10) Res. SESA 162/05"
+    },
+    {
+        "id": "49",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Manipuladores com bom asseio pessoal e uso de uniforme e EPIs",
+        "risk": "",
+        "legislation": "Manipuladores (Item 1) Res. SESA 162/05 e Item 4.6.3 e 4.6.6, RDC 216/04"
+    },
+    {
+        "id": "50",
+        "category": "INFRAESTRUTURA - ÁREA DE MANIPULAÇÃO, REFEITÓRIO, LACTÁRIO, ALIMENTOS E MANIPULADORES",
+        "description": "Refeição tercerizada - deve apresentar Licença Sanitária",
+        "risk": "",
+        "legislation": "Controle qualidade (Item 1) Res. SESA 162/05"
+    },
+    {
+        "id": "51",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "Sala multiplo uso e/ou biblioteca",
+        "risk": "",
+        "legislation": "Sala multiplo, biblioteca Res. SESA 162/05"
+    },
+    {
+        "id": "52",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "Diretoria e sala de professores",
+        "risk": "",
+        "legislation": "Diretoria, sala de professores Res. SESA 162/05"
+    },
+    {
+        "id": "53",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "Enfermaria",
+        "risk": "",
+        "legislation": "Opcional, res. SESA 162/05"
+    },
+    {
+        "id": "54",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "Espaço de amamentação",
+        "risk": "",
+        "legislation": "Berçario I (Item 15) Res. SESA 162/05"
+    },
+    {
+        "id": "55",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "Almoxarifado/Sala para material pedagógico",
+        "risk": "",
+        "legislation": "Infra 11 Res. SESA 162/05"
+    },
+    {
+        "id": "56",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "DML (Depósito de Material de Limpeza): mínimo 1 unidade, com tanque, ventilação e acesso restrito.",
+        "risk": "",
+        "legislation": "Tab. DML, Res. SESA 162/05"
+    },
+    {
+        "id": "57",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "Lavanderia com fluxo unidirecional (sem cruzamento de roupa suja/limpa) e produtos registrados no MS.",
+        "risk": "",
+        "legislation": "Infra 13 e Saúde 3, Res. SESA 162/05"
+    },
+    {
+        "id": "58",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "Abastecimento de água e esgoto ligada à rede pública",
+        "risk": "",
+        "legislation": "Infra 1 e 2, Res. SESA 162/05"
+    },
+    {
+        "id": "59",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "Abrigo de resíduos tipo cabine ou container e separado por categoria (reciclável e não reciclável)",
+        "risk": "",
+        "legislation": "Tab. Abrigo de Resíduos, Res. SESA 162/05"
+    },
+    {
+        "id": "60",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "Caixa de areia coberta com plástico após uso e manutenção registrada a cada 6 meses.",
+        "risk": "",
+        "legislation": "Infra 16/Saúde 13, Res. SESA 162/05"
+    },
+    {
+        "id": "61",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "Plantas tóxicas ausente",
+        "risk": "",
+        "legislation": "Saúde 6, Res. SESA 162/05"
+    },
+    {
+        "id": "62",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "Medicamentos armazenado em local seguro, identificados e administrado com receita médica, por pessoa capacitada.",
+        "risk": "",
+        "legislation": "Saúde 22, Res. SESA 162/05"
+    },
+    {
+        "id": "63",
+        "category": "OUTRAS INFRAESTRUTURAS",
+        "description": "Caixa de gordura em bom estado de conservação e perfeito funcionamento.",
+        "risk": "",
+        "legislation": "Infra 4 e Saúde 15, Res. SESA 162/05"
     }
 ];
