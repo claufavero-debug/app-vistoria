@@ -1303,10 +1303,12 @@ function generateReport() {
         compTextEl.textContent = state.complementaryInfo || "Nenhuma informação complementar registrada.";
         if (!state.complementaryInfo) {
             compTextEl.style.fontStyle = "italic";
-            compTextEl.style.color = "#94a3b8";
+            compTextEl.style.color = "#000000";
+            compTextEl.style.fontWeight = "bold";
         } else {
             compTextEl.style.fontStyle = "normal";
-            compTextEl.style.color = "var(--text-main)";
+            compTextEl.style.color = "#000000";
+            compTextEl.style.fontWeight = "bold";
         }
     }
     
@@ -1599,54 +1601,68 @@ function exportAsEditableDoc() {
             <style>
                 @page {
                     size: 8.5in 11in;
-                    margin: 1.0in 1.0in 1.0in 1.0in;
+                    margin: 0.5in 0.5in 0.5in 0.5in;
                 }
                 body {
-                    font-family: 'Arial', sans-serif;
-                    font-size: 11pt;
-                    line-height: 1.5;
+                    font-family: 'Calibri', sans-serif;
+                    font-size: 12.5pt;
+                    font-weight: bold;
+                    line-height: 1.25;
                     color: #000000;
                 }
                 h1 {
                     text-align: center;
-                    font-size: 14pt;
+                    font-size: 13.5pt;
                     font-weight: bold;
-                    margin-bottom: 5px;
+                    color: #000000;
+                    margin: 4px 0 2px 0;
+                    text-transform: uppercase;
                 }
                 h2 {
-                    font-size: 12pt;
+                    font-size: 12.5pt;
                     font-weight: bold;
-                    border-bottom: 2px solid #000000;
-                    padding-bottom: 3px;
-                    margin-top: 25px;
-                    margin-bottom: 10px;
+                    color: #000000;
+                    border-bottom: 1.5px solid #000000;
+                    padding-bottom: 2px;
+                    margin-top: 14px;
+                    margin-bottom: 6px;
+                    text-transform: uppercase;
                 }
                 .report-header {
-                    margin-bottom: 20px;
+                    margin-bottom: 10px;
+                    border-bottom: 2px solid #000000;
+                    padding-bottom: 8px;
                 }
-                .logo-text {
+                .report-header-center {
                     text-align: center;
+                    margin-bottom: 6px;
                 }
-                .logo-text h3 { font-size: 10pt; margin: 0; }
-                .logo-text h2 { font-size: 12pt; margin: 2px 0; border: none; padding: 0; }
-                .logo-text h4 { font-size: 9pt; margin: 0; color: #555555; }
-                
+                .report-header-logo-img {
+                    max-height: 48px;
+                }
                 .report-title-box {
                     text-align: center;
-                    margin-top: 15px;
-                    margin-bottom: 20px;
+                    margin-top: 2px;
+                    margin-bottom: 6px;
                 }
-                
+                .report-title-box p {
+                    font-size: 11pt;
+                    font-weight: bold;
+                    color: #000000;
+                    margin: 0;
+                }
                 table, .report-details-grid {
                     width: 100%;
                     border-collapse: collapse;
-                    margin-top: 10px;
-                    margin-bottom: 15px;
+                    margin-top: 6px;
+                    margin-bottom: 10px;
                 }
                 th, td, .report-details-grid td {
                     border: 1px solid #000000;
-                    padding: 6px;
-                    font-size: 10pt;
+                    padding: 4px 6px;
+                    font-size: 11pt;
+                    font-weight: bold;
+                    color: #000000;
                     vertical-align: top;
                 }
                 th {
@@ -1654,83 +1670,114 @@ function exportAsEditableDoc() {
                     font-weight: bold;
                     text-align: left;
                 }
-                
                 .report-details-grid div {
-                    font-size: 10pt;
+                    font-size: 11pt;
+                    font-weight: bold;
+                    color: #000000;
                 }
-                
                 .report-summary-stats {
-                    margin-bottom: 20px;
+                    margin-bottom: 10px;
                 }
                 .report-summary-stats table td {
                     text-align: center;
                     width: 25%;
+                    font-weight: bold;
+                    padding: 4px;
                 }
-                
                 .finding-item {
                     border: 1px solid #000000;
-                    padding: 10px;
-                    margin-bottom: 15px;
+                    padding: 6px 8px;
+                    margin-bottom: 6px;
                     page-break-inside: avoid;
+                    font-size: 12.5pt;
+                    font-weight: bold;
+                    color: #000000;
                 }
                 .finding-item-header {
                     font-weight: bold;
                     background-color: #f2f2f2;
-                    padding: 6px;
+                    padding: 3px 6px;
                     border-bottom: 1px solid #000000;
+                    font-size: 11pt;
                 }
                 .finding-desc {
-                    margin-top: 5px;
+                    margin-top: 4px;
                     font-weight: bold;
+                    font-size: 12.5pt;
+                    color: #000000;
                 }
                 .finding-observation {
                     background-color: #f9f9f9;
-                    padding: 6px;
+                    padding: 5px 8px;
                     border-left: 3px solid #000000;
-                    margin-top: 5px;
+                    margin-top: 4px;
+                    font-size: 11.5pt;
+                    font-weight: bold;
+                    color: #000000;
                 }
                 .finding-legislation {
-                    font-size: 9pt;
+                    font-size: 10pt;
+                    font-weight: bold;
                     background-color: #eeeeee;
-                    padding: 4px;
-                    margin-top: 5px;
+                    padding: 2px 4px;
+                    margin-top: 4px;
+                    color: #000000;
                 }
-                
                 .finding-photos-grid {
-                    margin-top: 10px;
+                    margin-top: 6px;
                 }
                 .finding-photo {
-                    max-width: 160px;
-                    max-height: 120px;
-                    margin-right: 8px;
-                    margin-bottom: 8px;
-                    border: 1px solid #666666;
+                    max-width: 150px;
+                    max-height: 100px;
+                    margin-right: 6px;
+                    margin-bottom: 6px;
+                    border: 1px solid #000000;
                 }
-                
+                .report-signatures {
+                    margin-top: 12px;
+                    border-top: 1.5px solid #000000;
+                    padding-top: 6px;
+                }
+                .signatures-statement {
+                    font-size: 10pt;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
                 .report-sig-row {
                     width: 100%;
-                    margin-top: 40px;
+                    margin-top: 10px;
                 }
                 .report-sig-col {
                     text-align: center;
                     vertical-align: top;
-                    padding: 10px;
+                    padding: 6px;
                 }
                 .sig-line {
                     border-bottom: 1px solid #000000;
-                    margin-bottom: 5px;
-                    height: 50px;
+                    margin-bottom: 4px;
+                    height: 44px;
                 }
                 .sig-image {
-                    max-height: 45px;
+                    max-height: 40px;
                 }
                 .sig-title {
                     font-weight: bold;
-                    font-size: 10pt;
+                    font-size: 10.5pt;
+                    color: #000000;
                 }
                 .sig-subtitle {
-                    font-size: 9pt;
-                    color: #555555;
+                    font-size: 9.5pt;
+                    font-weight: bold;
+                    color: #000000;
+                }
+                .report-footer {
+                    font-size: 9.5pt;
+                    font-weight: bold;
+                    color: #000000;
+                    border-top: 1px solid #000000;
+                    margin-top: 12px;
+                    padding-top: 6px;
+                    text-align: center;
                 }
                 .hidden, .no-print, .report-toolbar {
                     display: none;
